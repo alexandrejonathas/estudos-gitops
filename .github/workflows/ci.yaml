@@ -32,9 +32,6 @@ jobs:
           context: ./app
           file: ./app/Dockerfile
           push: true
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: ${{ secrets.DOCKER_USERNAME}}/estudos-gitops
           tags: ${{ github.sha }}, latest
 
 
