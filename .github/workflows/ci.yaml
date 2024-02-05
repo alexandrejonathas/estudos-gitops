@@ -18,7 +18,7 @@ jobs:
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
       - name: Build docker image
-        run: cd ./app && docker build . --file Dockerfile --tag $DOCKER_USERNAME/estudos-gitops:$(date +%s)
+        run: cd ./app && docker build . --file Dockerfile --tag $DOCKER_USERNAME/estudos-gitops:${{github.sha}}
 
       - name: Push image to dockerhub
         run: docker push ${{ secrets.DOCKER_USERNAME }}/estudos-gitops
