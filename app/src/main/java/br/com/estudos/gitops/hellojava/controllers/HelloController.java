@@ -10,7 +10,7 @@ public class HelloController {
     
     @GetMapping("/api/hello")
     public String getMethodName(@RequestParam String name) {
-        var str = name == null ? "Olá" : "Hello, "+name;
+        String str = name == null ? "Olá" : "Hello, "+name;
         return str;
     }
     
