@@ -29,5 +29,28 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/estudos-gitops:latest, ${{ secrets.DOCKER_USERNAME }}/estudos-gitops:${{ github.sha }}
 
+      - name: Setup Kustomize
+        uses: imranismail/setup-kustomize@v1
+        with:
+          kustomize-version: "3.6.1"
+
+      - name: Update Kubernetes resources
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        run: |
+          cd k8s
+          kustomize edit set image hello-java=$DOCKER_USERNAME/estudos-gitops:$GITHUB_SHA
+
+      - name: Commit
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "Github Action"
+          git commit -am"Bump docker version"
+
+      - name: Push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.TOKEN_GITHUB }}
+          repository: alexandrejonathas/estudos-gitops
 
 
