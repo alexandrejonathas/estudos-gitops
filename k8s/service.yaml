@@ -10,4 +10,4 @@ spec:
     port: 9090
     targetPort: 8080
     protocol: TCP
-  type: NodePort
+  type: LoadBalancer
