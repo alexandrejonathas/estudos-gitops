@@ -8,4 +8,4 @@ resources:
 images:
 - name: hello-java
   newName: alexandrejonathas/estudos-gitops
-  newTag: 562cb3dc3d0df451ef5a72e1bedbbce6e44e9b95
+  newTag: 814f32c11d32c212ee1dd171bc7469171b810e0d
